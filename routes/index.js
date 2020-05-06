@@ -1,8 +1,22 @@
 const express = require('express')
 const router = express.Router()
 
+const db = require('../db')
+
 router.get('/', (req, res) => {
-  res.render('index', { hi: 'Hello World!' })
+  db.getUsers()
+    .then(users => {
+      res.render('index', { users: users })
+    })
+    .catch(err => {
+      res.status(500).send('DATABASE ERROR: ' + err.message)
+    })
+})
+
+router.post('/', (req, res) => {
+  const { name, email, phone,} = req.body
+  db.addUser({ name, email, phone })
+    .then(() => res.redirect('/'))
 })
 
 module.exports = router

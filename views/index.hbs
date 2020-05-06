@@ -1,9 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>EDA Phase 1 Express Boilerplate</title>
+    <title>WD03-trello</title>
   </head>
   <body>
-    {{ hi }}
+    <ul>
+    {{#each users}}
+      <li><a href="/profile/{{id}}">{{name}}</a> ({{email}})</li>
+    {{/each}}
+    </ul>
+    <h4>Add a new user:</h4>
+    <form action="/" method="post">
+
+      <label for="name">Name:</label><br>
+      <input type="text" id="name" name="name"><br>
+
+      <label for="email">Email:</label><br>
+      <input type="text" id="email" name="email"><br>
+      
+      <label for="favouriteColour">Phone:</label><br>
+      <input type="text" id="phone" name="phone"><br>
+      
+      <input type="submit" value="Submit">
+
+    </form>  
+  
   </body>
 </html>
