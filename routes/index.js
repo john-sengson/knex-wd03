@@ -6,7 +6,7 @@ const db = require('../db')
 router.get('/', (req, res) => {
   db.getUsers()
     .then(users => {
-      res.render('index', { users: users })
+      res.render('home', { users: users })
     })
     .catch(err => {
       res.status(500).send('DATABASE ERROR: ' + err.message)
